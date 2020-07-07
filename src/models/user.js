@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-// const { delete } = require('../router/user');
+const Task = require('./task');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -49,7 +49,19 @@ const userSchema = new mongoose.Schema({
                 required: true
             }
         }
-    ]
+    ],
+    avatar: {
+        type: Buffer
+    }
+}, {
+    timestamps: true
+})
+
+//sets up virtual relationship with task
+userSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'owner'
 })
 
 // hides private data
@@ -61,6 +73,7 @@ userSchema.methods.toJSON = function () {
 
     delete userObject.password
     delete userObject.tokens
+    delete userObject.avatar
     return userObject
 }
 
@@ -103,6 +116,13 @@ userSchema.pre('save', async function (next) {
     }
 
     next() // we call next to exit the function ie saving the user if next isn't called it will assume the function is still running hence the function will not exit hence not saving the user
+})
+
+//Deletes user tasks when user is removed
+userSchema.pre('remove', async function (next) {
+    const user = this;
+    await Task.deleteMany({ owner: user._id })
+    next()
 })
 const User = mongoose.model('User', userSchema)
 
