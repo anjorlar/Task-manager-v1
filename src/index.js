@@ -15,7 +15,7 @@ app.use(taskRoute);
 app.get('/', (req, res) => {
     res.send({
         message: `welcome to the task-manager base route`
-    })
+    });
 });
 
 app.listen(port, () => {
