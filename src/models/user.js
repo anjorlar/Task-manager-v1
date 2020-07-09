@@ -81,7 +81,7 @@ userSchema.methods.toJSON = function () {
 // accesses the userSchema.statics.findByCredentials function and it is a method on the instance of the 'user'
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse');
+    const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRETKEY);
 
     user.tokens = user.tokens.concat({ token });
     await user.save()
