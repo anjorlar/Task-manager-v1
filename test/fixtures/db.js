@@ -62,6 +62,7 @@ const populateDatabase = async () => {
 }
 
 module.exports = {
-    userOne, userOneId, populateDatabase,
-    userTwoId, userTwo, taskOne, taskTwo, taskThree
+    userOne, userOneId,
+    populateDatabase, userTwoId,
+    userTwo, taskOne, taskTwo, taskThree
 }

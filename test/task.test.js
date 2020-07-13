@@ -3,8 +3,8 @@ process.env.NODE_ENV = 'test'
 const request = require('supertest');
 const app = require('../src/app');
 const Task = require('../src/models/task');
-const { userOne,
-    userOneId,
+const {
+    userOne, userOneId,
     populateDatabase, userTwoId,
     userTwo, taskOne,
     taskTwo, taskThree
