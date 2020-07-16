@@ -7,12 +7,12 @@
 - Image upload: Multer and Sharp
 - Mailing: Sendgrid
 
-## Requirements and Installation
+### Requirements and Installation
 To install and run this project you would need to have listed stack installed globally:
 * Node.js 
 * Nodemon
 
- # To run:
+ ## To run:
 
 *  git clone this repo
 *  cd into the folder
