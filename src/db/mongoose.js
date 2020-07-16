@@ -2,11 +2,13 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 let uri;
 
-if (process.env.NODE_ENV == 'test') {
-    uri = process.env.MONGODB_URL_TEST
-} else {
-    uri = process.env.MONGODB_URL
-}
+// if (process.env.NODE_ENV == 'test') {
+//     uri = process.env.MONGODB_URL_TEST
+// } else {
+//     uri = process.env.MONGODB_URL
+// }
+
+uri = process.env.NODE_ENV == 'test' ? process.env.MONGODB_URL_TEST : process.env.MONGODB_URL
 
 console.log('uri uri', uri)
 
