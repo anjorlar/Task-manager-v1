@@ -1,4 +1,4 @@
-# clone of a task-manager-app
+# Clone of a task-manager-app
 
 ## Technologies Used
 - Backend: Node/Express
